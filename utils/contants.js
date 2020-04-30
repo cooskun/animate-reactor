@@ -1,0 +1,4 @@
+export const ENTER_STARTED = 'ENTER_STARTED'
+export const ENTER_ENDED = 'ENTER_ENDED'
+export const LEAVE_STARTED = 'LEAVE_STARTED'
+export const LEAVE_ENDED = 'LEAVE_ENDED'
