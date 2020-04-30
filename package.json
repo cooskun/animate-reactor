@@ -11,12 +11,12 @@
     "url": "git+https://github.com/cooskun/Animate-Reactor.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Coskun Baris, cooskunbaris@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cooskun/Animate-Reactor/issues"
+    "url": "https://github.com/cooskun/animate-reactor/issues"
   },
-  "homepage": "https://github.com/cooskun/Animate-Reactor#readme",
+  "homepage": "https://github.com/cooskun/animate-reactor#readme",
   "dependencies": {
     "animate.css": "^3.7.2",
     "classnames": "^2.2.6",
