@@ -3,7 +3,7 @@ import {
   ENTER_ENDED,
   LEAVE_STARTED,
   LEAVE_ENDED,
-} from './constants'
+} from './contants'
 
 const statuses = {
   onEnterStart: ENTER_STARTED,
