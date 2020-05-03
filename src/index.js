@@ -18,6 +18,7 @@ const Animate = ({
   onEachEnd,
   onEachAction,
   children,
+  className,
   ...props
 }) => {
   const animationRef = useRef()
@@ -25,7 +26,7 @@ const Animate = ({
   const [history, setHistory] = useState([])
   const [entered, setEntered] = useState(false)
 
-  const classNames = classnames({
+  const classNames = classnames(className, {
     infinite,
     animated: true,
     [enter]: !!enter && !entered,
@@ -102,6 +103,7 @@ Animate.propTypes = {
   onEachStart: PropTypes.func,
   onEachEnd: PropTypes.func,
   onEachAction: PropTypes.func,
+  className: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
 }
 
