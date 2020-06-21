@@ -6,14 +6,15 @@ import { callback, statuses } from './utils'
 
 const Animate = ({
   enter,
-  leave,
+  exit,
   infinite,
   delay,
   speed,
+  repeat,
   onEnterStart,
   onEnterEnd,
-  onLeaveStart,
-  onLeaveEnd,
+  onExitStart,
+  onExitEnd,
   onEachStart,
   onEachEnd,
   onEachAction,
@@ -27,23 +28,25 @@ const Animate = ({
   const [entered, setEntered] = useState(false)
 
   const classNames = classnames(className, {
-    infinite,
-    animated: true,
-    [enter]: !!enter && !entered,
-    [leave]: !!leave && entered,
-    [`delay-${delay}s`]: !!delay,
-    [speed]: !!speed,
+    animate__animated: true,
+    animate__infinite: infinite,
+    [`animate__${enter}`]: !!enter && !entered,
+    [`animate__${exit}`]: !!exit && entered,
+    [`animate__${speed}`]: !!speed,
+    [`animate__delay-${delay}s`]: !!delay,
+    [`animate__repeat-${repeat}`]: !!repeat && !infinite,
   })
 
   useEffect(() => {
     animationRef.current.addEventListener('animationstart', () => {
       !entered
         ? setStatus(statuses.onEnterStart)
-        : setStatus(statuses.onLeaveStart)
+        : setStatus(statuses.onExitStart)
     })
+
     animationRef.current.addEventListener('animationend', () => {
       !entered && setEntered(true)
-      !entered ? setStatus(statuses.onEnterEnd) : setStatus(statuses.onLeaveEnd)
+      !entered ? setStatus(statuses.onEnterEnd) : setStatus(statuses.onExitEnd)
     })
   }, [entered])
 
@@ -72,11 +75,11 @@ const Animate = ({
       case statuses.onEnterEnd:
         callback(onEnterEnd)
         break
-      case statuses.onLeaveStart:
-        callback(onLeaveStart)
+      case statuses.onExitStart:
+        callback(onExitStart)
         break
-      case statuses.onLeaveEnd:
-        callback(onLeaveEnd)
+      case statuses.onExitEnd:
+        callback(onExitEnd)
         break
       default:
         break
@@ -92,14 +95,14 @@ const Animate = ({
 
 Animate.propTypes = {
   enter: PropTypes.string,
-  leave: PropTypes.string,
+  exit: PropTypes.string,
   infinite: PropTypes.bool,
   delay: PropTypes.number,
   speed: PropTypes.string,
   onEnterStart: PropTypes.func,
   onEnterEnd: PropTypes.func,
-  onLeaveStart: PropTypes.func,
-  onLeaveEnd: PropTypes.func,
+  onExitStart: PropTypes.func,
+  onExitEnd: PropTypes.func,
   onEachStart: PropTypes.func,
   onEachEnd: PropTypes.func,
   onEachAction: PropTypes.func,
