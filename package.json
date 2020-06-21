@@ -17,10 +17,12 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "animate.css": "^3.7.2",
+    "animate.css": "^4.1.0",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2"
   },
@@ -28,9 +30,18 @@
     "react": "16.x"
   },
   "devDependencies": {
-    "nwb": "0.24.x",
+    "@babel/core": "^7.10.2",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-loader": "^8.1.0",
+    "nwb": "^0.25.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "author": "Coskun Baris",
   "homepage": "https://github.com/cooskun/animate-reactor#readme",
