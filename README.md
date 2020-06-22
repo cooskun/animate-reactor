@@ -30,6 +30,10 @@ const Component = () => {
 }
 ```
 
+## Storybook
+
+To see Animate Reactor in action, [visit Storybook page](https://animate-reactor.netlify.app/).
+
 ## Enter and Exit
 
 Animate Reactor can get two animation which triggers after each other. Which means, you can have a **simple** timeline with this. See on example.
