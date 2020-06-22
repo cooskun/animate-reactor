@@ -1,12 +1,8 @@
-# animate-reactor
-
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-
 # Animate Reactor
 
 A component that makes Animate.css a React Component
+
+[![npm package][npm-badge]][npm]
 
 Animate Reactor created to animate things with power of Animate.css. To use this component effectively, have a look this [animation list](https://github.com/daneden/animate.css#user-content-animations).
 
@@ -27,19 +23,19 @@ import Animate from 'animate-reactor'
 
 const Component = () => {
   return (
-    <Animate enter="shake" delay={3} speed="faster">
+    <Animate enter="shakeX" delay={3} speed="faster">
       Shake Me!
     </Animate>
   )
 }
 ```
 
-## Enter and Leave
+## Enter and Exit
 
 Animate Reactor can get two animation which triggers after each other. Which means, you can have a **simple** timeline with this. See on example.
 
 ```javascript
-<Animate enter="fadeIn" leave="fadeOut">
+<Animate enter="fadeIn" exit="fadeOut">
   Welcome and Good bye
 </Animate>
 ```
@@ -54,7 +50,15 @@ To create an endless animation use `infinite` prop.
 </Animate>
 ```
 
-An **important** note. If you set this prop, `leave, onEnterEnd, onLeaveEnd, onEachEnd` props will be disabled since the enter animation never ends. This is not an Animate Reactor bug. This is a part of nature of CSS Animations.
+An **important** note. If you use infinite prop, `exit, onEnterEnd, onEachEnd` props will be disabled since the enter animation never ends. This is not an Animate Reactor bug. This is a part of nature of CSS Animations.
+
+If you want animation run certain times, use `repeat` prop instead. Unlike `infinite`, all props will be available to use. Includes `exit, onEnterEnd, onEachEnd`.
+
+```javascript
+<Animate enter="heartBeat" repeat={3}>
+  Beat three times and stop!
+</Animate>
+```
 
 ## Power of callbacks
 
@@ -63,13 +67,14 @@ Animate Reactor let your callbacks have a place on each part of the animation pr
 ```javascript
 <Animate
   enter="bounce"
+  exit="flash"
   onEachAction={() => console.log('Something happened')}
   onEachStart={() => console.log('Something started')}
   onEachEnd={() => console.log('Something ended')}
   onEnterStart={() => console.log('Enter animation started')}
   onEnterEnd={() => console.log('Enter animation ended')}
-  onLeaveStart={() => console.log('Leave animation started')}
-  onLeaveEnd={() => console.log('Leave animation ended')}>
+  onExitStart={() => console.log('Exit animation started')}
+  onExitEnd={() => console.log('Exit animation ended')}>
   Endless Shake!
 </Animate>
 ```
@@ -94,9 +99,9 @@ You can get support of CSS to make your animations even stronger.
 
 ### enter
 
-First animation. Pick one of animation list from [the list](https://github.com/daneden/animate.css#user-content-animations).
+First animation. Pick one of animation list from [the list](https://animate.style/).
 
-### leave
+### exit
 
 Second animation. This runs right after first animation.
 
@@ -107,6 +112,16 @@ Make the animation infinite (endless).
 | Prop     | Values     | Default |
 | -------- | ---------- | ------- |
 | infinite | true/false | false   |
+
+### repeat
+
+Run animation certain time(s).
+
+| Prop   | Values  | Default |
+| ------ | ------- | ------- |
+| repeat | 1, 2, 3 | null    |
+
+**Note** For more repeat, consider to use Custom CSS.
 
 ### delay
 
@@ -141,11 +156,11 @@ Triggers when enter animation starts.
 
 Triggers when enter animation ends.
 
-### onLeaveStart
+### onExitStart
 
 Triggers when leave animation starts.
 
-### onLeaveEnd
+### onExitEnd
 
 Triggers when leave animation ends
 
@@ -161,9 +176,5 @@ Triggers when enter and leave animation ends.
 
 Triggers when enter and leave animations starts and ends.
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[npm]: https://www.npmjs.org/package/animate-reactor
+[npm-badge]: https://img.shields.io/npm/v/animate-reactor
