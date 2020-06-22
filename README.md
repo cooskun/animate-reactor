@@ -99,6 +99,27 @@ You can get support of CSS to make your animations even stronger.
 </Animate>
 ```
 
+## Control Animate Manually
+
+Via `animate` prop, you can prefer to start the animation by hand.
+
+```javascript
+import React, { useState } from 'react'
+import Animate from 'animate-reactor'
+
+const AnimateMe = () => {
+  const [animate, setAnimate] = useState(false)
+
+  const toggleAnimate = () => setAnimate(!animate)
+
+  return (
+    <Animate enter="bounce" animate={animate} click={toggle}>
+      Animate me on Click
+    </Animate>
+  )
+}
+```
+
 ## Props References
 
 ### enter
