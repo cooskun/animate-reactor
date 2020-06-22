@@ -5,12 +5,15 @@ import 'animate.css'
 import { callback, statuses } from './utils'
 
 const Animate = ({
+  animate = true,
   enter,
   exit,
   infinite,
   delay,
-  speed,
   repeat,
+  speed,
+  children,
+  className,
   onEnterStart,
   onEnterEnd,
   onExitStart,
@@ -18,8 +21,6 @@ const Animate = ({
   onEachStart,
   onEachEnd,
   onEachAction,
-  children,
-  className,
   ...props
 }) => {
   const animationRef = useRef()
@@ -28,7 +29,7 @@ const Animate = ({
   const [entered, setEntered] = useState(false)
 
   const classNames = classnames(className, {
-    animate__animated: true,
+    animate__animated: animate,
     animate__infinite: infinite,
     [`animate__${enter}`]: !!enter && !entered,
     [`animate__${exit}`]: !!exit && entered,
@@ -93,12 +94,18 @@ const Animate = ({
   )
 }
 
+export default Animate
+
 Animate.propTypes = {
-  enter: PropTypes.string,
+  animate: PropTypes.bool,
+  enter: PropTypes.string.isRequired,
   exit: PropTypes.string,
   infinite: PropTypes.bool,
   delay: PropTypes.number,
   speed: PropTypes.string,
+  repeat: PropTypes.number,
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   onEnterStart: PropTypes.func,
   onEnterEnd: PropTypes.func,
   onExitStart: PropTypes.func,
@@ -106,8 +113,4 @@ Animate.propTypes = {
   onEachStart: PropTypes.func,
   onEachEnd: PropTypes.func,
   onEachAction: PropTypes.func,
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
 }
-
-export default Animate

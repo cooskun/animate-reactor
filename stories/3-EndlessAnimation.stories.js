@@ -17,9 +17,10 @@ export const Example = () => {
     <Animate
       key={key}
       infinite={boolean('Infinite', true)}
-      enter={select('Enter', animations, animations[0])}
+      enter={select('Enter', animations, 'heartBeat')}
       delay={select('Delay', [...delays, null], null)}
       speed={select('Speed', [...speeds, null], null)}
+      className="storybook-test"
       {...events}>
       Animate Reactor
     </Animate>

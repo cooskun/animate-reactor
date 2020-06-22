@@ -16,7 +16,8 @@ export const Example = () => {
   return (
     <Animate
       key={key}
-      enter={select('Enter', animations, animations[0])}
+      enter={select('Enter', animations, 'bounce')}
+      className="storybook-test"
       style={object('Style', {
         animationDuration: '800ms',
         animationDelay: '0s',

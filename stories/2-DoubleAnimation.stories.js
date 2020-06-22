@@ -23,11 +23,12 @@ export const Example = () => {
   return (
     <Animate
       key={key}
-      enter={select('Enter', animations, animations[0])}
-      exit={select('Exit', animations, animations[1])}
+      enter={select('Enter', animations, 'fadeIn')}
+      exit={select('Exit', animations, 'fadeOut')}
       delay={select('Delay', [...delays, null], null)}
       speed={select('Speed', [...speeds, null], null)}
       repeat={select('Repeat', [...repeats, null], null)}
+      className="storybook-test"
       {...events}>
       Animate Reactor
     </Animate>

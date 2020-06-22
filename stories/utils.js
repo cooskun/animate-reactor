@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  [class^='animate'] {
+  [class*='animate__'] {
     padding: 10px;
     border-radius: 5px;
     border: 3px solid #000;
