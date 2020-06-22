@@ -54,6 +54,9 @@
     "url": "git+https://github.com/cooskun/animate-reactor.git"
   },
   "keywords": [
+    "animation",
+    "css-animations",
+    "react",
     "react-component"
   ]
 }
